@@ -29,5 +29,15 @@ public class Demo01 {
     public static void main(String[] args) {
         Student s = new Student();
         s.compute();
+        primitives();
+    }
+
+    static void primitives() {
+        System.out.println("\n\nInside primitives ...");
+        int intHex = 0x0041; // 16 power of 0 * 1 + 16 power of 1 * 4 + ...
+        System.out.println("intHex: " + intHex);
+
+        int intBinary = 0b01000001;
+        System.out.println("intBinary: " + intBinary);
     }
 }
