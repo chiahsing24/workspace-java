@@ -1,5 +1,6 @@
-package com.codingjx.fundamental.test.calculator;
+package com.codingjx.fundamental.test.terrymartin.calculator;
 
+import com.codingjx.fundamental.test.terrymartin.calculator.Calculator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

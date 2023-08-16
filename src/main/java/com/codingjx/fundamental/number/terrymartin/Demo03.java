@@ -1,4 +1,4 @@
-package com.codingjx.fundamental.number;
+package com.codingjx.fundamental.number.terrymartin;
 
 import java.math.BigDecimal;
 import java.math.MathContext;

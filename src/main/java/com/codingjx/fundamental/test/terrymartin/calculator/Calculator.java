@@ -1,4 +1,4 @@
-package com.codingjx.fundamental.test.calculator;
+package com.codingjx.fundamental.test.terrymartin.calculator;
 
 public class Calculator {
     public int add(int num1, int num2) {

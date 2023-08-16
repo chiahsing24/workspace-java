@@ -1,4 +1,4 @@
-package com.codingjx.fundamental.number;
+package com.codingjx.fundamental.number.terrymartin;
 
 public class Demo05 {
     public static void main(String[] args) {
