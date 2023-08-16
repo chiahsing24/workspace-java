@@ -2,6 +2,7 @@ package com.codingjx.fundamental.test.terrymartin.calculator;
 
 import com.codingjx.fundamental.test.terrymartin.calculator.Calculator;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -27,9 +28,23 @@ public class CalculatorTest {
         assertEquals(sum, 2);
     }
 
-    @Test
+    @Test()
+    @Disabled
+//    @Ignore // JUNIT version before v.5
     public void canAddMaxIntPlusOne() {
         int sum = calc.add(Integer.MAX_VALUE, 1);
         assertEquals(Integer.MAX_VALUE + 1L, sum);
+    }
+
+    @Test
+    public void annuityExample() {
+        String answer = calc.calcAnnuity("22000", 7, ".06", 1);
+        assertEquals("$184,664.43", answer);
+    }
+
+    @Test
+    public void annuityPractice2Example() {
+        String answer = calc.calcAnnuity("1200", 10, ".08", 4);
+        assertEquals("$72,482.38", answer);
     }
 }
