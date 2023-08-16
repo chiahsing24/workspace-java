@@ -25,4 +25,10 @@ public class CalculatorTest {
         int sum = calc.add(1, 1);
         assertEquals(sum, 2);
     }
+
+    @Test
+    public void canAddMaxIntPlusOne() {
+        int sum = calc.add(Integer.MAX_VALUE, 1);
+        assertEquals(Integer.MAX_VALUE + 1L, sum);
+    }
 }
