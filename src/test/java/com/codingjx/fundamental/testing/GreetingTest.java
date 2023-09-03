@@ -1,20 +1,25 @@
 package com.codingjx.fundamental.testing;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class GreetingTest {
+    Greeting greeting;
+
+    @BeforeEach
+    void setUp() {
+        greeting = new Greeting();
+    }
 
     @Test
     void helloWorld() {
-        Greeting greeing = new Greeting();
-        System.out.println(greeing.helloWorld());
+        System.out.println(greeting.helloWorld());
     }
 
     @Test
     void testHelloWorld() {
-        Greeting greeing = new Greeting();
-        System.out.println(greeing.helloWorld("John"));
+        System.out.println(greeting.helloWorld("John"));
     }
 }
