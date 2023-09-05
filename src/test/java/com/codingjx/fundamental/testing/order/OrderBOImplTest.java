@@ -8,9 +8,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.sql.SQLException;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.ArgumentMatchers.any;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -50,4 +48,62 @@ class OrderBOImplTest {
         assertFalse(result);
         verify(dao).create(order);
     }
+
+    @Test
+    public void placeOrder_ShouldThrowBOException() throws SQLException, BOException {
+        Order order = new Order();
+
+        when(dao.create(order)).thenThrow(SQLException.class);
+
+        assertThrows(BOException.class, () -> {
+            boolean result = bo.placeOrder(order);
+        });
+    }
+
+    @Test
+    public void cancelOrder_ShouldCancelOrder() throws SQLException, BOException {
+        Order order = new Order();
+
+        when(dao.read(123)).thenReturn(order);
+        when(dao.update(order)).thenReturn(1);
+
+        boolean result = bo.cancelOrder(123);
+
+        assertTrue(result);
+        verify(dao).read(123);
+        verify(dao).update(order);
+    }
+
+    @Test
+    public void cancelOrder_ShouldNotCancelOrder() throws SQLException, BOException {
+        Order order = new Order();
+
+        when(dao.read(123)).thenReturn(order);
+        when(dao.update(order)).thenReturn(0);
+
+        boolean result = bo.cancelOrder(123);
+
+        assertFalse(result);
+        verify(dao).read(123);
+        verify(dao).update(order);
+    }
+
+    @Test
+    public void cancelOrder_ShouldThrowBOExceptionOnRead() throws SQLException, BOException {
+        when(dao.read(123)).thenThrow(SQLException.class);
+        assertThrows(BOException.class, () -> {
+            bo.cancelOrder(123);
+        });
+    }
+
+    @Test
+    public void cancelOrder_ShouldThrowBOExceptionOnUpdate() throws SQLException, BOException {
+        Order order = new Order();
+        when(dao.read(123)).thenReturn(order);
+        when(dao.update(order)).thenThrow(SQLException.class);
+        assertThrows(BOException.class, () -> {
+           bo.cancelOrder(123);
+        });
+    }
+
 }
