@@ -106,4 +106,13 @@ class OrderBOImplTest {
         });
     }
 
+    @Test
+    public void deleteOrder() throws SQLException, BOException {
+        when(dao.delete(123)).thenReturn(1);
+
+        boolean result = bo.deleteOrder(123);
+
+        assertTrue(result);
+        verify(dao).delete(123);
+    }
 }
