@@ -9,8 +9,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class OrderBOImplTest {
@@ -29,12 +28,15 @@ class OrderBOImplTest {
     public void placeOrder_ShouldCreateAnOrder() throws SQLException, BOException {
         Order order = new Order();
 
-        when(dao.create(order)).thenReturn(Integer.valueOf(1));
+//        when(dao.create(order)).thenReturn(Integer.valueOf(1));
+        when(dao.create(any(Order.class))).thenReturn(Integer.valueOf(1));
 
         boolean result = bo.placeOrder(order);
 
         assertTrue(result);
         verify(dao).create(order);
+        verify(dao, times(1)).create(order);
+        verify(dao, atLeast(1)).create(order);
     }
 
     @Test
@@ -108,7 +110,7 @@ class OrderBOImplTest {
 
     @Test
     public void deleteOrder() throws SQLException, BOException {
-        when(dao.delete(123)).thenReturn(1);
+        when(dao.delete(anyInt())).thenReturn(1);
 
         boolean result = bo.deleteOrder(123);
 
