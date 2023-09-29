@@ -2,6 +2,7 @@ package com.codingjx.fundamental.testing;
 
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
@@ -173,6 +174,21 @@ public class SampleTest {
         System.out.println("Boolean.parseBoolean(map.get(\"o\")) = " + Boolean.parseBoolean(map.get("o")));
         System.out.println("Boolean.parseBoolean(map.get(\"O\")) = " + Boolean.parseBoolean(map.get("O")));
         System.out.println();
+    }
+
+    @Test
+    public void testNumberParsing() {
+        System.out.println(Integer.parseInt("1"));
+        System.out.println(Integer.parseInt(null));
+    }
+
+    @Test
+    public void testNumberUtilsParsing() {
+        System.out.println(NumberUtils.isParsable("22"));
+        System.out.println(NumberUtils.isParsable(""));
+        System.out.println(NumberUtils.isParsable(" "));
+        System.out.println(NumberUtils.isParsable(null));
+        System.out.println(NumberUtils.isParsable("-1"));
     }
 
 }
