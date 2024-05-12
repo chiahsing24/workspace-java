@@ -1,4 +1,4 @@
-package com.codingjx.fundamental.bitmanipulation;
+package com.codingjx.fundamental.bit;
 
 public class BitManipulationDemo01 {
     public static void main(String[] args) {

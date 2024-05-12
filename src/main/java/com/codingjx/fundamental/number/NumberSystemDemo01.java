@@ -1,4 +1,4 @@
-package com.codingjx.fundamental.numbersystem;
+package com.codingjx.fundamental.number;
 
 public class NumberSystemDemo01 {
     public static void main(String[] args) {
